@@ -6,7 +6,7 @@ const GET_MOVIE=gql`
     query getMovie($id:Int!){
         movie(id:$id)
         {
-           
+            id
             name
            
         }

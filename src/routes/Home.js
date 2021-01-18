@@ -3,13 +3,14 @@ import { gql,useQuery } from '@apollo/client';
 import styled from "styled-components"; //import for tag generation
 import Movie from "../componets/Movie";
 
-//Graph QL query 정의 
-const GET_MOVIES =gql`
+//Graph QL query 정의 여기서 isLiked는 백엔드가 아닌 Client에서 가져오는 것으므로 @client를 붙혀준다  
+const GET_MOVIES =gql` 
  {
      movies{
          id
          name
-     
+         isLiked @client
+      
      }
  }
 `;
@@ -76,6 +77,7 @@ export default () => {
             <Movie
               key={m.id}
               id={m.id}
+              isLiked={m.isLiked}
             />
           ))}
   
